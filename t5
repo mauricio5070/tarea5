@@ -1,0 +1,125 @@
+class Persona:
+
+    def __init__(self,ide,nom,ape,tel,dire):
+        self.ID= ide
+        self.nombre=nom
+        self.apellido=ape
+        self.telefono=tel
+        self.direccion=dire
+        
+    
+    def __str__(self):
+        return '------------------------Informacion del paciente------------------------ \n' \
+               'ID: {} \n' \
+               'Nombre: {} \n' \
+               'Apellido: {} \n' \
+                'Telefono: {} \n' \
+               'Direccion: {}\n'.format(self.ID, self.nombre,self.apellido,self.telefono,self.direccion)    
+#------------------------------------------------------------------------------------------------------------------------------------        
+class enfermedad:
+    def __init__(self,n):
+            self.nombre=n
+            
+    def __str__(self):
+        return ' {} \n'.format(self.nombre)
+                                   
+class medicamento:
+    def __init__(self,n):
+            self.nombre=n  
+              
+    def __str__(self):
+        return ' {} \n'.format(self.nombre)
+                                          
+#----------------------------------------------------------------------------------------------------------------------------------            
+
+class Paciente(Persona):
+    def __init__(self,ide,nom,ape,tel,dire):
+        super(Paciente, self).__init__(ide,nom,ape,tel,dire)
+        self.enfermedades=[]
+        self.medicamentos=[]
+        
+    
+    def agrega_enfer(self):
+        print('Digite el nombre de la enfermedad:')
+        e= input()
+        enf=enfermedad(e)
+        self.enfermedades.append(enf)
+    def agrega_med(self):
+        print('Digite el nombre del medicamento:')
+        m= input()
+        med=medicamento(m)
+        
+        self.medicamentos.append(med)
+    def imprimeEM(self):
+        print('----------Lista de enfermedades:----------')
+        for i in self.enfermedades:
+            print(self.enfermedades.index(i)+1,':',i)
+        
+        print('---------Lista de medicamentos:-----------')    
+        for p in self.medicamentos:
+            print(self.medicamentos.index(p)+1,':',p)
+        
+            
+
+         
+        
+#----------------------------------------------------------------------------------------------------------------------------------
+carlos=Paciente(123,'Carlos','Montero',36535626,"Moravia")
+
+carlos.agrega_enfer()
+carlos.agrega_enfer()
+carlos.agrega_med()
+
+print(carlos)
+carlos.imprimeEM()
+
+class clinica:
+    
+    def __init__(self):
+        self.nombre="Clinica Sanitas"
+        self.pacientes=[]
+        print(self.nombre)
+        
+    def crear(self):
+        print('Digite el id:')
+        i=input()   
+        print('Digite el nombre:')
+        n=input()
+        print('Digite el apellido:')
+        a=input()
+        print('Digite el telefono:')
+        t=input()
+        print('Digite iniciales de provincia sin espacios:')
+        d=input()
+        p= Paciente(i,n,a,t,d)
+        self.pacientes.append(p)
+    def verPacientes():
+        for i in self.pacientes:
+            print(self.pacientes.index(i)+1,':',i)
+            
+    def borrarPaciente(p):
+        if p in pacientes:
+            del p           
+    def diferencias(a, b):
+        e1=a.enfermedades
+        e2=b.enfermedades
+    return [list(e2 - e1), list(e1 - e2)]
+
+    def intersection(a, b):
+        e1=a.enfermedades
+        e2=b.enfermedades
+        return list(e1 & e2)   
+        
+    #def menu(self):
+      #  x='y'
+      #  while(x!='n'):
+      #      print('Digite una opcion:\n'\
+       ##           '1.Crear paciente\n'\
+       #           '2.Ver pacientes\n')
+        #    m= input()
+        #    s={'1':self.crear,'2':self.verPacientes}
+        #    s[m]()
+         #   print("Desea continua? y/n")
+           # x=input()
+#c= clinica()
+#c.menu()
